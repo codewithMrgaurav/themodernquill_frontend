@@ -1,0 +1,60 @@
+# robots.txt for The Modern Quill
+
+########################################
+# Global rules (all crawlers)
+########################################
+User-agent: *
+Allow: /
+
+# Disallow admin and private pages for all bots
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /login
+Disallow: /register
+
+# Explicitly allow public content sections
+Allow: /blog/
+Allow: /category/
+Allow: /categories
+Allow: /about
+Allow: /contact
+
+########################################
+# AI crawlers – explicitly allowed
+########################################
+
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# OpenAI data crawler
+User-agent: GPTBot-Image
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# Google-Extended (Google AI data usage)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic / Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+########################################
+# Sitemap location
+########################################
+Sitemap: https://themodernquill.com/sitemap.xml
+
+########################################
+# Crawl-delay (optional, adjust as needed)
+########################################
+Crawl-delay: 1
+

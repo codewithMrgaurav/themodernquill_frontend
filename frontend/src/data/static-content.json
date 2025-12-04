@@ -1,0 +1,170 @@
+{
+  "about": {
+    "badge": "About Us",
+    "mission": {
+      "title": "Our Mission",
+      "content": "At The Modern Quill, we believe in the power of knowledge and the importance of sharing expertise. Our mission is to create a platform where readers can discover well-researched, high-quality content across diverse topics—from cutting-edge technology and artificial intelligence to health, business, travel, and beyond. We strive to make learning accessible, engaging, and valuable for everyone."
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "engineers": {
+        "title": "Engineers & Developers",
+        "icon": "code",
+        "description": "Our team includes experienced software engineers, web developers, and technology experts who bring deep technical knowledge and practical insights. They write about the latest programming languages, frameworks, development practices, and emerging technologies to help fellow developers stay ahead."
+      },
+      "doctors": {
+        "title": "Doctors & Healthcare Professionals",
+        "icon": "health",
+        "description": "Medical professionals, including doctors, nurses, and healthcare specialists, contribute evidence-based articles on health, wellness, medical breakthroughs, and patient care. Their expertise ensures that health-related content is accurate, reliable, and beneficial for readers seeking trustworthy medical information."
+      },
+      "otherProfessionals": "Beyond engineers and doctors, our diverse team includes business strategists, marketing experts, educators, financial advisors, designers, and professionals from many other fields. Each contributor brings real-world experience and a passion for sharing knowledge that makes a difference."
+    },
+    "whatWeOffer": {
+      "title": "What We Offer",
+      "features": [
+        {
+          "title": "30+ Categories",
+          "description": "Explore content across technology, health, business, travel, lifestyle, and more."
+        },
+        {
+          "title": "Expert Writers",
+          "description": "Articles written by professionals with real-world experience and deep expertise."
+        },
+        {
+          "title": "Fresh Content Daily",
+          "description": "New articles published regularly to keep you informed and inspired."
+        },
+        {
+          "title": "Well-Researched",
+          "description": "Every article is thoroughly researched and fact-checked for accuracy and reliability."
+        },
+        {
+          "title": "High-Quality Images",
+          "description": "Visual content that enhances understanding and makes reading more engaging."
+        },
+        {
+          "title": "Easy Navigation",
+          "description": "Clean, modern design that makes finding and reading content effortless."
+        }
+      ]
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "content": "We are committed to providing you with content that is not only informative but also trustworthy, well-researched, and valuable. Our team of engineers, doctors, and other professionals work tirelessly to ensure that every article meets our high standards for quality and accuracy. Whether you're looking to learn about the latest in technology, improve your health and wellness, grow your business, or explore new interests, The Modern Quill is here to support your journey with expert insights and practical knowledge."
+    },
+    "community": {
+      "title": "Join Our Community",
+      "description": "Have questions, suggestions, or want to contribute? We'd love to hear from you.",
+      "cta": "Get in Touch"
+    }
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "info": [
+      {
+        "type": "email",
+        "label": "Email Us",
+        "value": "editor@themodernquill.com",
+        "icon": "email"
+      },
+      {
+        "type": "response",
+        "label": "Response Time",
+        "value": "Within 24 hours",
+        "icon": "time"
+      },
+      {
+        "type": "support",
+        "label": "Support",
+        "value": "Always here to help",
+        "icon": "support"
+      }
+    ],
+    "form": {
+      "namePlaceholder": "John Doe",
+      "emailPlaceholder": "you@example.com",
+      "messagePlaceholder": "Tell us how we can help you..."
+    }
+  },
+  "categories": {
+    "badge": "Categories",
+    "description": "Browse all categories available on The Modern Quill. Each topic section contains well-researched articles written by experts in their fields.",
+    "popularCategoriesTitle": "Popular Categories",
+    "popularCategoriesDescription": "Readers are spending the most time exploring these categories right now.",
+    "postsLabel": "posts",
+    "articlesLabel": "articles"
+  },
+  "home": {
+    "hero": {
+      "badge": "Your Ultimate Blog Destination",
+      "title": "Discover Expert Insights Across 30+ Categories",
+      "subtitle": "Explore thousands of well-researched articles with high-quality images, covering everything from technology and AI to business, health, travel, and more. Discover insights, tips, and stories that matter to you.",
+      "badges": [
+        "30+ Categories",
+        "Expert Writers",
+        "Fresh Content Daily"
+      ]
+    },
+    "featured": {
+      "label": "Featured reading",
+      "title": "Featured Articles",
+      "viewAll": "View All",
+      "thumbnailLabel": "Thumbnail",
+      "moreHashtags": "more"
+    },
+    "latest": {
+      "title": "Latest Blog Posts"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest articles delivered to your inbox. Stay informed with fresh content every day.",
+      "button": "Subscribe",
+      "placeholder": "Enter your email"
+    },
+    "exploreCategories": {
+      "title": "Explore All Categories"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "Oops! The page you're looking for doesn't exist. But don't worry—we have plenty of amazing blogs waiting for you to explore.",
+    "ctaTitle": "What would you like to read?",
+    "ctaDescription": "Browse our 30+ categories and discover articles that interest you",
+    "exploreTitle": "Explore All Categories",
+    "backToHome": "Back to Home"
+  },
+  "login": {
+    "badge": "Login",
+    "title": "Welcome back",
+    "subtitle": "Enter your email to continue. In a later version this page will be wired to a real authentication system.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "button": "Continue with email (static)"
+  },
+  "footer": {
+    "about": {
+      "badge": "Knowledge Hub",
+      "title": "About The Modern Quill",
+      "description": "A modern blog for curious minds. Read practical insights, deep dives, and stories across technology, business, lifestyle, and more."
+    },
+    "popularTopics": {
+      "title": "Popular Topics",
+      "topics": [
+        "Technology",
+        "AI",
+        "Business",
+        "Marketing",
+        "Finance",
+        "Health"
+      ]
+    },
+    "newsletter": {
+      "title": "Stay in the loop",
+      "description": "Join our newsletter to receive curated reading lists and fresh articles each week.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  }
+}
+
