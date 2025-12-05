@@ -15,14 +15,24 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "All Categories - Explore 30+ Topics | The Modern Quill",
-    description: "Browse all categories and discover articles covering technology, AI, business, health, and more.",
+    description:
+      "Browse all categories and discover articles covering technology, AI, business, health, and more.",
     type: "website",
     url: "/categories",
+    images: [
+      {
+        url: "/blog-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "The Modern Quill logo",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: "All Categories - Explore 30+ Topics",
     description: "Browse all categories and discover expert articles.",
+    images: ["/blog-logo.svg"],
   },
   alternates: {
     canonical: "/categories",

@@ -1,9 +1,39 @@
 "use client";
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { categories } from "@/lib/categories";
 import { CategoryIcon, getCategoryColor } from "@/components/icons/CategoryIcon";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+export const metadata: Metadata = {
+  title: "Page Not Found | The Modern Quill",
+  description:
+    "The page you’re looking for doesn’t exist on The Modern Quill. Explore our categories to discover expert articles instead.",
+  keywords: ["404", "page not found", "The Modern Quill"],
+  openGraph: {
+    title: "Page Not Found | The Modern Quill",
+    description:
+      "The page you’re looking for doesn’t exist on The Modern Quill. Explore our categories to discover expert articles instead.",
+    type: "website",
+    url: "/404",
+    images: [
+      {
+        url: "/blog-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "The Modern Quill logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Page Not Found | The Modern Quill",
+    description:
+      "The page you’re looking for doesn’t exist on The Modern Quill. Explore our categories instead.",
+    images: ["/blog-logo.svg"],
+  },
+};
 
 export default function NotFound() {
   const { t } = useLanguage();
@@ -51,7 +81,7 @@ export default function NotFound() {
               >
                 <CategoryIcon category={{ slug: category.slug, name: category.name }} />
               </div>
-              <h4 className="text-sm font-semibold text-slate-900 group-hover:text-orange-600 transition">
+              <h4 className="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition">
                 {category.name}
               </h4>
             </Link>
@@ -63,7 +93,7 @@ export default function NotFound() {
       <div className="pt-6">
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600"
+          className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
         >
           {t.notFound.backToHome}
         </Link>

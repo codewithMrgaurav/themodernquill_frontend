@@ -11,7 +11,7 @@ export default function ContactPage() {
       <div className="w-full space-y-8">
         {/* Header Section - Centered */}
         <header className="text-center space-y-4">
-          <div className="inline-flex items-center justify-center h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 shadow-lg">
+          <div className="inline-flex items-center justify-center h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-sky-500 shadow-lg">
             <svg
               className="h-8 w-8 text-white"
               fill="none"
@@ -27,7 +27,7 @@ export default function ContactPage() {
             </svg>
           </div>
           <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">
               {content.contact.badge}
             </p>
             <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
@@ -49,7 +49,7 @@ export default function ContactPage() {
                   className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                 >
                   <svg
-                    className="h-4 w-4 text-orange-500"
+                    className="h-4 w-4 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="name"
-                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
                   placeholder={content.contact.form.namePlaceholder}
                 />
               </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                   className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                 >
                   <svg
-                    className="h-4 w-4 text-orange-500"
+                    className="h-4 w-4 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 <input
                   id="email"
                   type="email"
-                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
                   placeholder={content.contact.form.emailPlaceholder}
                 />
               </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                   className="flex items-center gap-2 text-sm font-semibold text-slate-800"
                 >
                   <svg
-                    className="h-4 w-4 text-orange-500"
+                    className="h-4 w-4 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -121,14 +121,14 @@ export default function ContactPage() {
                 <textarea
                   id="message"
                   rows={6}
-                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100 resize-none"
+                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100 resize-none"
                   placeholder={content.contact.form.messagePlaceholder}
                 />
               </div>
 
               <button
                 type="button"
-                className="group w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-amber-600 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                className="group w-full rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-blue-700 hover:to-sky-600 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span className="flex items-center justify-center gap-2">
                   {t.contact.sendMessage}

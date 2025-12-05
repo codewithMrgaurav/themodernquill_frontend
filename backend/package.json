@@ -1,19 +1,39 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "description": "The Modern Quill Backend API",
   "main": "src/server.js",
   "scripts": {
     "dev": "node src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "seed:categories": "node src/scripts/seedCategories.js",
+    "seed:admin": "node src/scripts/seedAdminUser.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "backend",
+    "express",
+    "mongodb"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mongoose": "^9.0.0"
+    "image-size": "^2.0.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.0",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
-  "description": ""
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

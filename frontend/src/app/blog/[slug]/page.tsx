@@ -1,15 +1,23 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import { categories } from "@/lib/categories";
 import type { Metadata } from "next";
+import { api, endpoints } from "@/lib/api";
+import BlogPostClient from "./BlogPostClient";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
-// This will be replaced with real data from backend
+// Server-side function to fetch post for metadata
 const getPostBySlug = async (slug: string) => {
+  try {
+    const response = await api.get(endpoints.postBySlug(slug), undefined, false);
+    return response.success ? response.data : null;
+  } catch (error) {
+    return null;
+  }
+};
+
+// Legacy placeholder function (kept for fallback)
+const getPostBySlugLegacy = async (slug: string) => {
   // Placeholder content based on slug - will fetch from API later
   const postData: Record<
     string,
@@ -222,7 +230,9 @@ const getPostBySlug = async (slug: string) => {
     readTime: post.readTime,
     hashtags: post.hashtags || [],
     keywords: post.keywords || [],
-    image: imageMap[slug] || "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+    image:
+      imageMap[slug] ||
+      "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
   };
 };
 
@@ -244,14 +254,14 @@ export async function generateMetadata({
     title: `${post.title} | The Modern Quill`,
     description: post.description || post.excerpt,
     keywords: post.keywords?.join(", ") || "",
-    authors: [{ name: post.author.name }],
+    authors: [{ name: "The Modern Quill" }],
     openGraph: {
       title: post.title,
       description: post.description || post.excerpt,
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.publishedAt,
-      authors: [post.author.name],
+      authors: ["The Modern Quill"],
       images: [
         {
           url: post.image,
@@ -276,7 +286,7 @@ export async function generateMetadata({
     },
     other: {
       "article:tag": post.hashtags?.join(", ") || "",
-      "article:author": post.author.name,
+      "article:author": "The Modern Quill",
       "article:section": post.category.name,
     },
   };
@@ -284,247 +294,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  // Related posts (will come from backend)
-  const relatedPosts = [
-    {
-      title: "Related Article Title 1",
-      slug: "related-article-1",
-      excerpt: "This is a related article excerpt.",
-      image: "https://images.pexels.com/photos/574077/pexels-photo-574077.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      readTime: "5 min read",
-    },
-    {
-      title: "Related Article Title 2",
-      slug: "related-article-2",
-      excerpt: "This is another related article excerpt.",
-      image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      readTime: "7 min read",
-    },
-    {
-      title: "Related Article Title 3",
-      slug: "related-article-3",
-      excerpt: "This is a third related article excerpt.",
-      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      readTime: "6 min read",
-    },
-  ];
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://themodernquill.com";
-
-  // Breadcrumb Schema for SEO
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: baseUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: post.category.name,
-        item: `${baseUrl}/category/${post.category.slug}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: `${baseUrl}/blog/${post.slug}`,
-      },
-    ],
-  };
-
-  // Article Schema for SEO
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.description || post.excerpt,
-    image: {
-      "@type": "ImageObject",
-      url: post.image,
-      width: 1200,
-      height: 630,
-    },
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    author: {
-      "@type": "Person",
-      name: post.author.name,
-      url: `${baseUrl}/author/${post.author.slug}`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "The Modern Quill",
-      logo: {
-        "@type": "ImageObject",
-        url: `${baseUrl}/blog-logo.svg`,
-        width: 512,
-        height: 512,
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${baseUrl}/blog/${post.slug}`,
-    },
-    keywords: post.keywords?.join(", ") || "",
-    articleSection: post.category.name,
-    wordCount: post.content.replace(/<[^>]*>/g, "").split(/\s+/).length,
-    inLanguage: "en-US",
-  };
-
-  return (
-    <>
-      {/* Schema Markup for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-      />
-      <article className="space-y-8">
-        {/* Breadcrumb */}
-      <nav className="text-sm text-slate-600" aria-label="Breadcrumb">
-        <ol className="flex items-center gap-2">
-          <li>
-            <Link href="/" className="hover:text-orange-600 transition">
-              Home
-            </Link>
-          </li>
-          <li>/</li>
-          <li>
-            <Link
-              href={`/category/${post.category.slug}`}
-              className="hover:text-orange-600 transition"
-            >
-              {post.category.name}
-            </Link>
-          </li>
-          <li>/</li>
-          <li className="text-slate-900 font-medium line-clamp-1">
-            {post.title}
-          </li>
-        </ol>
-      </nav>
-
-      {/* Article Header */}
-      <header className="space-y-4">
-        <div className="flex items-center gap-3">
-          <Link
-            href={`/category/${post.category.slug}`}
-            className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700 hover:bg-orange-200 transition"
-          >
-            {post.category.name}
-          </Link>
-          <span className="text-sm text-slate-500">{post.readTime}</span>
-          <span className="text-sm text-slate-500">{post.publishedAt}</span>
-        </div>
-        <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
-          {post.title}
-        </h1>
-        <p className="text-xl text-slate-600">{post.description || post.excerpt}</p>
-        
-        {/* Hashtags */}
-        {post.hashtags && post.hashtags.length > 0 && (
-          <div className="flex items-center gap-2 flex-wrap pt-2">
-            {post.hashtags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full bg-orange-50 px-3 py-1 text-sm font-medium text-orange-700 hover:bg-orange-100 transition"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* Author Info */}
-        <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
-          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-300 flex items-center justify-center">
-            <span className="text-lg font-bold text-white">
-              {post.author.name.charAt(0)}
-            </span>
-          </div>
-          <div>
-            <Link
-              href={`/author/${post.author.slug}`}
-              className="font-semibold text-slate-900 hover:text-orange-600 transition"
-            >
-              {post.author.name}
-            </Link>
-            <p className="text-sm text-slate-600">{post.author.bio}</p>
-          </div>
-        </div>
-      </header>
-
-      {/* Featured Image */}
-      <div className="relative h-96 w-full overflow-hidden rounded-2xl">
-        <Image
-          src={post.image}
-          alt={`${post.title} - Featured image showing ${post.category.name.toLowerCase()} content`}
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
-      </div>
-
-      {/* Article Content */}
-      <div className="prose prose-slate max-w-none">
-        <div
-          className="space-y-6 text-base leading-relaxed text-slate-700"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-          itemProp="articleBody"
-        />
-      </div>
-
-      {/* Related Posts */}
-      <section className="space-y-6 border-t border-slate-200 pt-8">
-        <h2 className="text-2xl font-semibold text-slate-900">
-          Related Articles
-        </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {relatedPosts.map((relatedPost) => (
-            <Link
-              key={relatedPost.slug}
-              href={`/blog/${relatedPost.slug}`}
-              className="group rounded-xl bg-white shadow-sm ring-1 ring-slate-100 transition hover:shadow-md"
-            >
-              <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-slate-200">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300">
-                  <span className="text-sm font-medium text-slate-500">
-                    Image
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="mb-2 font-semibold text-slate-900 group-hover:text-orange-600 transition">
-                  {relatedPost.title}
-                </h3>
-                <p className="mb-2 text-sm text-slate-600 line-clamp-2">
-                  {relatedPost.excerpt}
-                </p>
-                <span className="text-xs text-slate-500">
-                  {relatedPost.readTime}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-      </article>
-    </>
-  );
+  
+  return <BlogPostClient slug={slug} />;
 }
 

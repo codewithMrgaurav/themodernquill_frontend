@@ -24,13 +24,13 @@ export function getCategoryColor(slug: string): string {
     return "border-indigo-100 bg-indigo-50 text-indigo-600";
   }
   if (slug === "food") {
-    return "border-amber-100 bg-amber-50 text-amber-600";
+    return "border-blue-100 bg-blue-50 text-blue-600";
   }
   if (slug === "music" || slug === "movies" || slug === "entertainment") {
     return "border-purple-100 bg-purple-50 text-purple-600";
   }
   if (slug === "books") {
-    return "border-orange-100 bg-orange-50 text-orange-600";
+    return "border-blue-200 bg-blue-50 text-blue-700";
   }
   if (slug === "sports") {
     return "border-lime-100 bg-lime-50 text-lime-600";

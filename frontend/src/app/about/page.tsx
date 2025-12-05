@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <section className="mx-auto max-w-4xl space-y-8">
       <header className="space-y-4 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
           {content.about.badge}
         </p>
         <h1 className="font-[family:var(--font-heading)] text-4xl font-semibold text-slate-900 sm:text-5xl">
@@ -24,7 +24,7 @@ export default function AboutPage() {
       </header>
 
       {/* Mission Section */}
-      <div className="rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 p-8 ring-1 ring-orange-100">
+      <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-sky-50 p-8 ring-1 ring-blue-100">
         <h2 className="mb-4 text-2xl font-semibold text-slate-900">
           {content.about.mission.title}
         </h2>
@@ -126,7 +126,7 @@ export default function AboutPage() {
       </div>
 
       {/* Connect Section */}
-      <div className="rounded-xl border-2 border-orange-200 bg-orange-50 p-6 text-center">
+      <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-6 text-center">
         <h2 className="mb-2 text-xl font-semibold text-slate-900">
           {content.about.community.title}
         </h2>
@@ -135,7 +135,7 @@ export default function AboutPage() {
         </p>
         <a
           href="/contact"
-          className="inline-block rounded-lg bg-orange-500 px-6 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+          className="inline-block rounded-lg bg-blue-600 px-6 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
         >
           {content.about.community.cta}
         </a>

@@ -78,7 +78,7 @@ export function LanguageDropdown() {
                 }}
                 className={`w-full rounded-lg px-3 py-2 text-left text-sm transition ${
                   language === lang
-                    ? "bg-orange-50 text-orange-700 font-medium"
+                    ? "bg-blue-50 text-blue-700 font-medium"
                     : "text-slate-700 hover:bg-slate-50"
                 }`}
               >
@@ -86,7 +86,7 @@ export function LanguageDropdown() {
                   <span>{languageNames[lang]}</span>
                   {language === lang && (
                     <svg
-                      className="h-4 w-4 text-orange-600"
+                      className="h-4 w-4 text-blue-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

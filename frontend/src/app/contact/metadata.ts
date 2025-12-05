@@ -17,11 +17,20 @@ export const metadata: Metadata = {
     description: "Get in touch with The Modern Quill editorial team.",
     type: "website",
     url: "/contact",
+    images: [
+      {
+        url: "/blog-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "The Modern Quill logo",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: "Contact Us - The Modern Quill",
     description: "Get in touch with our editorial team.",
+    images: ["/blog-logo.svg"],
   },
   alternates: {
     canonical: "/contact",

@@ -20,11 +20,20 @@ export const metadata: Metadata = {
       "Learn about The Modern Quill - a platform run by engineers, doctors, and professionals passionate about sharing expert insights.",
     type: "website",
     url: "/about",
+    images: [
+      {
+        url: "/blog-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "The Modern Quill logo",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: "About Us - The Modern Quill",
     description: "Learn about The Modern Quill and our team of expert writers.",
+    images: ["/blog-logo.svg"],
   },
   alternates: {
     canonical: "/about",

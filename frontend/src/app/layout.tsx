@@ -5,6 +5,10 @@ import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
 import { LanguageProvider } from "../contexts/LanguageContext";
 import { ContentProvider } from "../contexts/ContentContext";
+import { ApiProvider } from "../contexts/ApiContext";
+import { AuthProvider } from "../contexts/AuthContext";
+import { ModeProvider } from "../contexts/ModeContext";
+import { EngagementTracker } from "../components/EngagementTracker";
 
 const headingFont = Merriweather({
   variable: "--font-heading",
@@ -147,6 +151,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
       <head>
+        <title>The Modern Quill - Expert Insights Across 30+ Categories</title>
+        <link rel="icon" href="/blog-logo.svg" />
+        <link rel="apple-touch-icon" href="/blog-logo.svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -157,23 +164,30 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-slate-50 text-slate-900 antialiased">
-        <ContentProvider>
-          <LanguageProvider>
-            <div className="flex min-h-screen flex-col">
-              <header>
-                <Navbar />
-              </header>
-              <main className="flex-1">
-                <div className="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8">
-                  {children}
-                </div>
-              </main>
-              <footer>
-                <Footer />
-              </footer>
-            </div>
-          </LanguageProvider>
-        </ContentProvider>
+        <ApiProvider>
+          <AuthProvider>
+            <ModeProvider>
+              <ContentProvider>
+                <LanguageProvider>
+                  <EngagementTracker />
+                  <div className="flex min-h-screen flex-col">
+                    <header>
+                      <Navbar />
+                    </header>
+                    <main className="flex-1">
+                      <div className="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8">
+                        {children}
+                      </div>
+                    </main>
+                    <footer>
+                      <Footer />
+                    </footer>
+                  </div>
+                </LanguageProvider>
+              </ContentProvider>
+            </ModeProvider>
+          </AuthProvider>
+        </ApiProvider>
       </body>
     </html>
   );
